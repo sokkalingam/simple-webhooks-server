@@ -12,14 +12,12 @@ export class AppController {
 
   @Post('/feeds/person')
   personFeeds(@Headers() headers, @Body() requestBody) {
-    this.appService.personFeeds.push({headers: headers, body: requestBody});
-    console.log("Person Feeds", JSON.stringify(requestBody), this.appService.personFeeds.length);
+    this.appService.addToPersonFeeds(headers, requestBody)
   }
 
   @Post('/feeds/company')
   companyFeeds(@Headers() headers, @Body() requestBody) {
-    this.appService.companyFeeds.push({headers: headers, body: requestBody});
-    console.log("Company Feeds", JSON.stringify(requestBody), this.appService.companyFeeds.length);
+    this.appService.addToCompanyFeeds(headers, requestBody)
   }
 
   @Get('/feeds/person')
