@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import * as _ from "lodash";
 
 @Injectable()
 export class AppService {
@@ -20,12 +19,12 @@ export class AppService {
 
   addToPersonFeeds(headers, body) {
     this.personFeeds.push({headers: headers, body: body})
-    this.personFeeds = _.drop(this.personFeeds, Math.max(this.personFeeds.length - this.maxSize, 0))
+    this.personFeeds = this.personFeeds.slice(Math.max(this.personFeeds.length - this.maxSize, 0))
   }
 
   addToCompanyFeeds(headers, body) {
     this.companyFeeds.push({headers: headers, body: body})
-    this.companyFeeds = _.drop(this.companyFeeds, Math.max(this.companyFeeds.length - this.maxSize, 0))
+    this.companyFeeds = this.companyFeeds.slice(Math.max(this.companyFeeds.length - this.maxSize, 0))
   }
 
 }
